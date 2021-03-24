@@ -1,40 +1,19 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:membership/ui/home/home_page.dart';
-import 'package:membership/ui/view/bloc/view_controller.dart';
-import 'package:membership/ui/view/nav_bar/custom_nav_bar.dart';
+import 'package:membership/ui/main_view/pages/home/horizontal_list_display.dart';
 
-class MainView extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _MainViewState();
+    return _HomePageState();
   }
 }
 
-class _MainViewState extends State<MainView> {
-  final _pageController = PageController();
-
-  late StreamSubscription _viewSubscription;
-
-  @override
-  void initState() {
-    super.initState();
-    MainViewController.init();
-    _viewSubscription = MainViewController.stream.listen((page) =>
-        _pageController.animateToPage(page,
-            duration: const Duration(milliseconds: 400), curve: Curves.ease));
-  }
-
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffD7D7D7),
       appBar: AppBar(
-        elevation: 4,
-        titleSpacing: 0,
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
         title: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Padding(
@@ -103,27 +82,82 @@ class _MainViewState extends State<MainView> {
           ),
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              physics: const NeverScrollableScrollPhysics(),
+          DecoratedBox(
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Column(
               children: [
-                HomePage(),
+                Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(
+                      'assets/images/home_photo.png',
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 12, bottom: 12),
+                    child: Text(
+                      'lihat semua promo >>',
+                      style: const TextStyle(
+                        color: Color(0xff505050),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
-          CustomNavBar(),
+          const SizedBox(height: 10),
+          DecoratedBox(
+            decoration: BoxDecoration(color: Colors.white),
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  for (var i = 0; i < 4; i++)
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 5.6,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 4),
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: Color(0xff999999),
+                                shape: BoxShape.circle,
+                              ),
+                              child: SizedBox(width: 48, height: 48),
+                            ),
+                          ),
+                          Text('label'),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          HorizontalListDisplay(label: 'Promo Instore'),
+          const SizedBox(height: 10),
+          HorizontalListDisplay(label: 'Not Visible'),
+          const SizedBox(height: 10),
+          HorizontalListDisplay(label: 'Promo Mingguan'),
+          const SizedBox(height: 10),
+          HorizontalListDisplay(label: 'Special Price'),
         ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _viewSubscription.cancel();
-    MainViewController.dispose();
-    super.dispose();
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:membership/ui/view/nav_bar/icon_entry.dart';
+import 'package:membership/ui/main_view/nav_bar/icon_entry.dart';
 
 class CustomNavBar extends StatelessWidget {
   @override

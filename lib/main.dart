@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:membership/other/overscroll_removed_behavior.dart';
-import 'package:membership/ui/view/main_view.dart';
+import 'package:membership/ui/main_view/main_view.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -22,6 +22,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          elevation: 4,
+          titleSpacing: 0,
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.black),
+        ),
+      ),
       builder: (context, child) => ScrollConfiguration(
         behavior: OverscrollRemovedBehavior(),
         child: child!,

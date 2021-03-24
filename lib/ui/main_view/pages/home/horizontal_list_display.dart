@@ -16,8 +16,19 @@ class HorizontalListDisplay extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 12, bottom: 10),
-              child: Text(label),
+              padding: const EdgeInsets.fromLTRB(12, 0, 12, 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(label),
+                  Text(
+                    'lihat semua promo >>',
+                    style: const TextStyle(
+                      color: Color(0xff505050),
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 180,

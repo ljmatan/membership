@@ -48,9 +48,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           ),
                         ),
                       ),
-                      Image.asset(
-                        'assets/images/category_0.png',
-                        height: 140,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Image.asset(
+                          'assets/images/category_0.png',
+                          fit: BoxFit.fitHeight,
+                          height: 120,
+                        ),
                       ),
                     ],
                   ),
@@ -85,8 +89,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 GridView.builder(
                   shrinkWrap: true,
                   itemCount: 20,
+                  physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 0.8,
+                    childAspectRatio: 0.7,
                     crossAxisCount: 2,
                   ),
                   itemBuilder: (context, i) => DecoratedBox(

@@ -5,7 +5,9 @@ import 'package:membership/ui/main_view/pages/categories/categories_page.dart';
 import 'package:membership/ui/main_view/pages/home/home_page.dart';
 import 'package:membership/ui/main_view/bloc/view_controller.dart';
 import 'package:membership/ui/main_view/nav_bar/custom_nav_bar.dart';
+import 'package:membership/ui/main_view/pages/menu/menu_page.dart';
 import 'package:membership/ui/main_view/pages/profile/auth/auth_page.dart';
+import 'package:membership/ui/main_view/pages/profile/user/user_page.dart';
 
 class MainView extends StatefulWidget {
   @override
@@ -41,7 +43,8 @@ class _MainViewState extends State<MainView> {
                 HomePage(),
                 CategoriesPage(),
                 const SizedBox(),
-                AuthPage(),
+                UserPage(), // AuthPage(),
+                MenuPage(),
               ],
             ),
           ),

@@ -4,6 +4,15 @@ import 'package:membership/other/overscroll_removed_behavior.dart';
 import 'package:membership/ui/main_view/main_view.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ],
+  );
+
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       statusBarBrightness: Brightness.dark,

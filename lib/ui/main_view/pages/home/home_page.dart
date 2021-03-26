@@ -3,7 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:membership/ui/main_view/pages/home/carousel/carousel_slider.dart';
 import 'package:membership/ui/main_view/pages/home/horizontal_list_display.dart';
+import 'package:membership/ui/main_view/pages/home/menu_button.dart';
 import 'package:membership/ui/main_view/pages/home/product_details.dart';
+import 'package:membership/ui/screens/promo_details/promos_screen.dart';
+import 'package:membership/ui/screens/tips_tricks_screen.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -133,38 +136,77 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      for (var i = 0; i < 4; i++)
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width / 5.6,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.only(bottom: 4),
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    color: Color(0xff999999),
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: SizedBox(width: 48, height: 48),
-                                ),
-                              ),
-                              Text('label'),
-                            ],
-                          ),
-                        ),
+                      HomePageMenuButton(
+                        label: 'Kunjungi Toko',
+                        route: const SizedBox(),
+                      ),
+                      HomePageMenuButton(
+                        label: 'Daftar Transaksi',
+                        route: const SizedBox(),
+                      ),
+                      HomePageMenuButton(
+                        label: 'Vouchermu',
+                        route: const SizedBox(),
+                      ),
+                      HomePageMenuButton(
+                        label: 'Tips Candi',
+                        route: TipsAndTricksScreen(),
+                      ),
                     ],
                   ),
                 ),
               ),
               const SizedBox(height: 10),
-              HorizontalListDisplay(label: 'Promo Instore'),
+              HorizontalListDisplay(
+                label: 'Promo Minggu Ini',
+                route: const SizedBox(),
+              ),
               const SizedBox(height: 10),
-              HorizontalListDisplay(label: 'Not Visible'),
+              HorizontalListDisplay(
+                label: 'Televisi Penawaran Terbaik',
+                route: const SizedBox(),
+              ),
               const SizedBox(height: 10),
-              HorizontalListDisplay(label: 'Promo Mingguan'),
+              HorizontalListDisplay(
+                label: 'Televisi Penawaran Terbaik',
+                route: const SizedBox(),
+              ),
               const SizedBox(height: 10),
-              HorizontalListDisplay(label: 'Special Price'),
+              HorizontalListDisplay(
+                label: 'Mesin Cuci Super Deal',
+                route: const SizedBox(),
+              ),
+              const SizedBox(height: 10),
+              HorizontalListDisplay(
+                label: 'Lemari Es Termurah',
+                route: const SizedBox(),
+              ),
+              const SizedBox(height: 10),
+              HorizontalListDisplay(
+                label: 'Air Conditioner',
+                route: const SizedBox(),
+              ),
+              const SizedBox(height: 10),
+              HorizontalListDisplay(
+                label: 'Aksesoris Pilihan',
+                route: PromosScreen(),
+              ),
+              const SizedBox(height: 10),
+              HorizontalListDisplay(
+                label: 'Audio',
+                route: const SizedBox(),
+              ),
+              const SizedBox(height: 10),
+              HorizontalListDisplay(
+                label: 'Kitchen',
+                route: PromosScreen(),
+              ),
+              const SizedBox(height: 10),
+              HorizontalListDisplay(
+                label: 'Home Appliance',
+                route: PromosScreen(),
+              ),
+              const SizedBox(height: 10),
             ],
           ),
           StreamBuilder(

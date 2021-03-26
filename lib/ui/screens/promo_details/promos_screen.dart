@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:membership/ui/screens/promo_details/promo_details_screen.dart';
 
-class FirstPromoScreen extends StatefulWidget {
+class PromosScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _FirstPromoScreenState();
+    return _PromosScreenState();
   }
 }
 
-class _FirstPromoScreenState extends State<FirstPromoScreen> {
+class _PromosScreenState extends State<PromosScreen> {
   final _promoSearchController = TextEditingController();
 
   @override

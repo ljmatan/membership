@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class HorizontalListDisplay extends StatelessWidget {
   final String label;
+  final Widget route;
 
-  HorizontalListDisplay({required this.label});
+  HorizontalListDisplay({required this.label, required this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +13,7 @@ class HorizontalListDisplay extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12),
         child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +60,11 @@ class HorizontalListDisplay extends StatelessWidget {
               ),
             ],
           ),
-          onTap: () {},
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) => route,
+            ),
+          ),
         ),
       ),
     );

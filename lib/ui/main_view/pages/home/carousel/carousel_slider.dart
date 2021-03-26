@@ -20,17 +20,19 @@ class _CarouselSliderState extends State<CarouselSlider> {
     _timer = Timer.periodic(
       const Duration(seconds: 3),
       (_) {
-        if (_currentPage < _maxExtent)
-          _pageController.nextPage(
-            duration: const Duration(milliseconds: 400),
-            curve: Curves.ease,
-          );
-        else
-          _pageController.animateToPage(
-            0,
-            duration: const Duration(milliseconds: 400),
-            curve: Curves.ease,
-          );
+        if (mounted) {
+          if (_currentPage < _maxExtent)
+            _pageController.nextPage(
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.ease,
+            );
+          else
+            _pageController.animateToPage(
+              0,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.ease,
+            );
+        }
       },
     );
   }

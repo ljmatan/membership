@@ -42,7 +42,7 @@ class _MembershipState extends State<Membership> {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback(
       (_) => Future.delayed(
-        const Duration(seconds: 2),
+        const Duration(seconds: 15),
         () => setState(() => _splashOver = true),
       ),
     );

@@ -17,6 +17,7 @@ class SplashScreen extends StatelessWidget {
             top: 20 + MediaQuery.of(context).padding.top,
             child: Column(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'TERMURAH\nTERPERCAYA.',

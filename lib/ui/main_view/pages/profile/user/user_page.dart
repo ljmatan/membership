@@ -16,7 +16,6 @@ class _UserPageState extends State<UserPage> {
     return Scaffold(
       backgroundColor: const Color(0xff999999),
       appBar: AppBar(
-        titleSpacing: 12,
         title: Text(
           'Akun Saya',
           style: const TextStyle(color: Colors.black),

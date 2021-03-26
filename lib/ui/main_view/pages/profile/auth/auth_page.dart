@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:membership/ui/main_view/pages/profile/auth/register/register_screen.dart';
+import 'package:membership/ui/main_view/pages/profile/user/user_page.dart';
 
 class AuthPage extends StatefulWidget {
   @override
@@ -66,21 +67,28 @@ class _AuthPageState extends State<AuthPage> {
                       ),
                     ),
                     const SizedBox(height: 22),
-                    DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: const Color(0xffFF0000),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 36,
-                        child: Center(
-                          child: Text(
-                            'Login',
-                            style: const TextStyle(
-                              color: Colors.white,
+                    GestureDetector(
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: const Color(0xffFF0000),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: 36,
+                          child: Center(
+                            child: Text(
+                              'Login',
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
                             ),
                           ),
+                        ),
+                      ),
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) => UserPage(),
                         ),
                       ),
                     ),

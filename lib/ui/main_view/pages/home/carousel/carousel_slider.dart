@@ -12,15 +12,7 @@ class CarouselSlider extends StatefulWidget {
 class _CarouselSliderState extends State<CarouselSlider> {
   final PageController _pageController = PageController();
 
-  void _addPageControllerListener() => _pageController.addListener(() {
-        if (_currentPage != _pageController.page!.round()) {
-          _timer.cancel();
-          _currentPage = _pageController.page!.round();
-          _setTimer();
-        }
-      });
-
-  late int _maxExtent;
+  int _maxExtent = 2;
   int _currentPage = 0;
 
   late Timer _timer;
@@ -44,10 +36,39 @@ class _CarouselSliderState extends State<CarouselSlider> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(() {
+      if (_currentPage != _pageController.page!.round()) {
+        _timer.cancel();
+        _currentPage = _pageController.page!.round();
+        _setTimer();
+      }
+    });
+    _setTimer();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: _pageController,
-      children: [],
+    return AspectRatio(
+      aspectRatio: 341 / 226,
+      child: PageView(
+        controller: _pageController,
+        children: [
+          for (var i = 0; i < 3; i++)
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  'assets/images/home_photo.png',
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+        ],
+      ),
     );
   }
 

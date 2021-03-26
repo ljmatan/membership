@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:membership/ui/main_view/pages/profile/user/history/entry.dart';
+import 'package:membership/ui/main_view/pages/profile/user/history/entry/entry.dart';
 
 class HistoryScreen extends StatefulWidget {
   @override
@@ -23,7 +23,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: true,
         title: Text(
           'Daftar Transaksi',
           style: const TextStyle(color: Colors.black),

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:membership/ui/main_view/pages/menu/screens/comparison/product_comparison.dart';
+import 'package:membership/ui/main_view/pages/menu/screens/location/store_location.dart';
+import 'package:membership/ui/screens/promo_details/promos_screen.dart';
+import 'package:membership/ui/screens/tips_tricks_screen.dart';
 
 class MenuPage extends StatelessWidget {
   static final List<String> _labels = const [
@@ -7,7 +11,16 @@ class MenuPage extends StatelessWidget {
     'Live Chat',
     'Lokasi Store',
     'QR Scanner',
-    'Comapre Produk',
+    'Compare Produk',
+  ];
+
+  static final List<Widget> _routes = [
+    FirstPromoScreen(),
+    TipsAndTricksScreen(),
+    const SizedBox(),
+    StoreLocationScreen(),
+    const SizedBox(),
+    ProductComparisonScreen(),
   ];
 
   @override
@@ -53,6 +66,11 @@ class MenuPage extends StatelessWidget {
                       ),
                       Text(_labels[i]),
                     ],
+                  ),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => _routes[i],
+                    ),
                   ),
                 ),
             ],

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:membership/ui/main_view/pages/cart/cart_page.dart';
 import 'package:membership/ui/main_view/pages/categories/categories_page.dart';
 import 'package:membership/ui/main_view/pages/home/home_page.dart';
 import 'package:membership/ui/main_view/bloc/view_controller.dart';
@@ -42,8 +43,8 @@ class _MainViewState extends State<MainView> {
               children: [
                 HomePage(),
                 CategoriesPage(),
-                const SizedBox(),
-                UserPage(), // AuthPage(),
+                CartPage(),
+                AuthPage(), //   UserPage(),
                 MenuPage(),
               ],
             ),

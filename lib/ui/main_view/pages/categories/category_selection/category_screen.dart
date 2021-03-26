@@ -12,7 +12,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: true,
         title: Text(
           'Kategori Barang',
           style: const TextStyle(color: Colors.black),

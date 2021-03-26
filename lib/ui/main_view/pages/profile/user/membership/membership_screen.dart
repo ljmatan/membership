@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class MembershipScreen extends StatefulWidget {
@@ -8,11 +10,27 @@ class MembershipScreen extends StatefulWidget {
 }
 
 class _MembershipScreenState extends State<MembershipScreen> {
+  final _pageController = PageController();
+
+  int _currentPage = 0;
+
+  final _pageIndexController = StreamController.broadcast();
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(() {
+      if (_pageController.page?.round() != _currentPage) {
+        _currentPage = _pageController.page!.round();
+        _pageIndexController.add(_currentPage);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: true,
         title: Text(
           'Status Membership',
           style: const TextStyle(color: Colors.black),
@@ -23,7 +41,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
           Stack(
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 60),
+                padding: const EdgeInsets.only(bottom: 50),
                 child: DecoratedBox(
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
@@ -54,100 +72,122 @@ class _MembershipScreenState extends State<MembershipScreen> {
                 ),
               ),
               Positioned(
+                top: 50,
                 bottom: 0,
-                left: 16,
-                right: 16,
-                child: DefaultTextStyle(
-                  style: const TextStyle(color: Colors.white),
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(7),
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.centerRight,
-                        colors: const [
-                          Color(0xffB2B2B2),
-                          Color(0xff7A7A7A),
-                        ],
-                      ),
-                    ),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: 240,
-                      child: Padding(
-                        padding: const EdgeInsets.all(14),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                left: 0,
+                right: 0,
+                child: PageView(
+                  controller: _pageController,
+                  children: [
+                    for (var i = 0; i < 4; i++)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: DefaultTextStyle(
+                          style: const TextStyle(color: Colors.white),
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              gradient: LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.centerRight,
+                                colors: const [
+                                  Color(0xffB2B2B2),
+                                  Color(0xff7A7A7A),
+                                ],
+                              ),
+                            ),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              height: 240,
+                              child: Padding(
+                                padding: const EdgeInsets.all(14),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      'Member Silver',
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 18,
-                                      ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Member Silver',
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Membership saat ini',
+                                              style: const TextStyle(
+                                                fontSize: 12,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Image.asset(
+                                          'assets/images/silver_badge_2.png',
+                                        ),
+                                      ],
                                     ),
-                                    Text(
-                                      'Membership saat ini',
-                                      style: const TextStyle(
-                                        fontSize: 12,
-                                      ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 12),
+                                          child: Text('Transaksi 20x lagi'),
+                                        ),
+                                        DecoratedBox(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(2.5),
+                                          ),
+                                          child: SizedBox(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: 5,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            bottom: 12,
+                                            top: 22,
+                                          ),
+                                          child:
+                                              Text('Transaksi Rp. 20.000,000'),
+                                        ),
+                                        DecoratedBox(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(2.5),
+                                          ),
+                                          child: SizedBox(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: 5,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                                Image.asset(
-                                  'assets/images/silver_badge_2.png',
-                                ),
-                              ],
+                              ),
                             ),
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 12),
-                                  child: Text('Transaksi 20x lagi'),
-                                ),
-                                DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(2.5),
-                                  ),
-                                  child: SizedBox(
-                                    width: MediaQuery.of(context).size.width,
-                                    height: 5,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    bottom: 12,
-                                    top: 22,
-                                  ),
-                                  child: Text('Transaksi Rp. 20.000,000'),
-                                ),
-                                DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(2.5),
-                                  ),
-                                  child: SizedBox(
-                                    width: MediaQuery.of(context).size.width,
-                                    height: 5,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+                  ],
                 ),
               )
             ],
@@ -160,14 +200,18 @@ class _MembershipScreenState extends State<MembershipScreen> {
                 for (var i = 0; i < 4; i++)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: i == 0
-                            ? const Color(0xffff5050)
-                            : const Color(0xff999999),
+                    child: StreamBuilder(
+                      stream: _pageIndexController.stream,
+                      initialData: 0,
+                      builder: (context, current) => DecoratedBox(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: i == current.data
+                              ? const Color(0xffff5050)
+                              : const Color(0xff999999),
+                        ),
+                        child: const SizedBox(width: 10, height: 10),
                       ),
-                      child: const SizedBox(width: 10, height: 10),
                     ),
                   ),
               ],
@@ -220,5 +264,12 @@ class _MembershipScreenState extends State<MembershipScreen> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    _pageIndexController.close();
+    super.dispose();
   }
 }

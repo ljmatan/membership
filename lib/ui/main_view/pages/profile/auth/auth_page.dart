@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:membership/ui/main_view/pages/profile/auth/register/register_screen.dart';
 
 class AuthPage extends StatefulWidget {
   @override
@@ -148,17 +149,34 @@ class _AuthPageState extends State<AuthPage> {
                       ),
                       child: Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 7),
-                            child: Text('Belum punya akun? Daftar disini'),
+                          GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 7),
+                              child: Text('Belum punya akun? Daftar disini'),
+                            ),
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) =>
+                                    RegisterScreen(),
+                              ),
+                            ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 7),
-                            child: Text('Lupa Password'),
+                          GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 7),
+                              child: Text('Lupa Password'),
+                            ),
+                            onTap: () {},
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 7),
-                            child: Text('Kirim Ulang Email Verifikasi'),
+                          GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 7),
+                              child: Text('Kirim Ulang Email Verifikasi'),
+                            ),
+                            onTap: () {},
                           ),
                         ],
                       ),

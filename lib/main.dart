@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:membership/other/overscroll_removed_behavior.dart';
 import 'package:membership/ui/main_view/main_view.dart';
+import 'package:membership/ui/screens/splash.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,10 +24,30 @@ void main() {
     ),
   );
 
-  runApp(MyApp());
+  runApp(Membership());
 }
 
-class MyApp extends StatelessWidget {
+class Membership extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MembershipState();
+  }
+}
+
+class _MembershipState extends State<Membership> {
+  bool _splashOver = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback(
+      (_) => Future.delayed(
+        const Duration(seconds: 2),
+        () => setState(() => _splashOver = true),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,7 +64,7 @@ class MyApp extends StatelessWidget {
         behavior: OverscrollRemovedBehavior(),
         child: child!,
       ),
-      home: MainView(),
+      home: _splashOver ? MainView() : SplashScreen(),
     );
   }
 }

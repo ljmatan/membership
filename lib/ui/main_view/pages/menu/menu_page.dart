@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:membership/ui/main_view/pages/profile/user/user_page.dart';
 import 'package:membership/ui/screens/comparison/product_comparison.dart';
+import 'package:membership/ui/screens/history/history_screen.dart';
 import 'package:membership/ui/screens/location/store_location.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MenuPage extends StatelessWidget {
   static final List<String> _labels = const [
@@ -13,8 +16,8 @@ class MenuPage extends StatelessWidget {
   ];
 
   static final List<Widget> _routes = [
-    const SizedBox(),
-    const SizedBox(),
+    UserPage(),
+    HistoryScreen(),
     const SizedBox(),
     StoreLocationScreen(),
     const SizedBox(),
@@ -65,11 +68,20 @@ class MenuPage extends StatelessWidget {
                       Text(_labels[i]),
                     ],
                   ),
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => _routes[i],
-                    ),
-                  ),
+                  onTap: i == 2
+                      ? () async {
+                          const String url = 'https://wa.me/6282289903000';
+                          if (await canLaunch(url))
+                            launch(url);
+                          else
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('Can\'t launch URL')));
+                        }
+                      : () => Navigator.of(context).push(
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) => _routes[i],
+                            ),
+                          ),
                 ),
             ],
           ),

@@ -43,14 +43,11 @@ class HorizontalListDisplay extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 8),
                         child: GestureDetector(
-                          child: DecoratedBox(
+                          child: const DecoratedBox(
                             decoration: BoxDecoration(
-                              color: const Color(0xff999999),
+                              color: Color(0xff999999),
                             ),
-                            child: SizedBox(
-                              height: 180,
-                              width: 140,
-                            ),
+                            child: SizedBox(height: 180, width: 140),
                           ),
                           onTap: () {},
                         ),

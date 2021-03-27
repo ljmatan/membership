@@ -5,6 +5,9 @@ import 'package:membership/ui/main_view/pages/home/carousel/carousel_slider.dart
 import 'package:membership/ui/main_view/pages/home/horizontal_list_display.dart';
 import 'package:membership/ui/main_view/pages/home/menu_button.dart';
 import 'package:membership/ui/main_view/pages/home/product_details.dart';
+import 'package:membership/ui/screens/comparison/product_comparison.dart';
+import 'package:membership/ui/screens/history/history_screen.dart';
+import 'package:membership/ui/screens/location/store_location.dart';
 import 'package:membership/ui/screens/promo_details/promos_screen.dart';
 import 'package:membership/ui/screens/tips_tricks_screen.dart';
 
@@ -138,15 +141,15 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       HomePageMenuButton(
                         label: 'Kunjungi Toko',
-                        route: const SizedBox(),
+                        route: StoreLocationScreen(),
                       ),
                       HomePageMenuButton(
                         label: 'Daftar Transaksi',
-                        route: const SizedBox(),
+                        route: HistoryScreen(),
                       ),
                       HomePageMenuButton(
                         label: 'Vouchermu',
-                        route: const SizedBox(),
+                        route: ProductComparisonScreen(),
                       ),
                       HomePageMenuButton(
                         label: 'Tips Candi',

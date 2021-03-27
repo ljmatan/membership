@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:membership/ui/main_view/pages/profile/user/history/entry/entry_details.dart';
+import 'entry_details.dart';
 
 class HistoryEntry extends StatelessWidget {
   final bool paid;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:membership/ui/main_view/pages/menu/screens/comparison/product_comparison.dart';
-import 'package:membership/ui/main_view/pages/menu/screens/location/store_location.dart';
+import 'package:membership/ui/screens/comparison/product_comparison.dart';
+import 'package:membership/ui/screens/location/store_location.dart';
 
 class MenuPage extends StatelessWidget {
   static final List<String> _labels = const [
@@ -13,6 +13,7 @@ class MenuPage extends StatelessWidget {
   ];
 
   static final List<Widget> _routes = [
+    const SizedBox(),
     const SizedBox(),
     const SizedBox(),
     StoreLocationScreen(),

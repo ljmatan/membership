@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:membership/ui/main_view/pages/profile/user/history/history_screen.dart';
 import 'package:membership/ui/main_view/pages/profile/user/info_carousel/info_carousel.dart';
 import 'package:membership/ui/main_view/pages/profile/user/membership/membership_screen.dart';
+import 'package:membership/ui/screens/history/history_screen.dart';
 
 class UserPage extends StatefulWidget {
   @override

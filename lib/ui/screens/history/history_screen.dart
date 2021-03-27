@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:membership/ui/main_view/pages/profile/user/history/entry/entry.dart';
+import 'entry/entry.dart';
 
 class HistoryScreen extends StatefulWidget {
   @override

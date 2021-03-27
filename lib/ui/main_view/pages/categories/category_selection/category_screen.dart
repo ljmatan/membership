@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:membership/ui/screens/product_detail/product_detail_screen.dart';
 
 class CategoryScreen extends StatefulWidget {
   @override
@@ -102,9 +103,17 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Image.asset(
-                            'assets/images/category_entry.png',
-                            width: MediaQuery.of(context).size.width,
+                          GestureDetector(
+                            child: Image.asset(
+                              'assets/images/category_entry.png',
+                              width: MediaQuery.of(context).size.width,
+                            ),
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) =>
+                                    ProductDetailScreen(),
+                              ),
+                            ),
                           ),
                           Stack(
                             children: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:membership/ui/screens/product_detail/product_detail_screen.dart';
 
 class HorizontalListDisplay extends StatelessWidget {
   final String label;
@@ -49,7 +50,12 @@ class HorizontalListDisplay extends StatelessWidget {
                             ),
                             child: SizedBox(height: 180, width: 140),
                           ),
-                          onTap: () {},
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) =>
+                                  ProductDetailScreen(),
+                            ),
+                          ),
                         ),
                       ),
                   ],

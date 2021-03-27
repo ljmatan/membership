@@ -162,32 +162,32 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 10),
               HorizontalListDisplay(
                 label: 'Promo Minggu Ini',
-                route: const SizedBox(),
+                route: PromosScreen(),
               ),
               const SizedBox(height: 10),
               HorizontalListDisplay(
                 label: 'Televisi Penawaran Terbaik',
-                route: const SizedBox(),
+                route: PromosScreen(),
               ),
               const SizedBox(height: 10),
               HorizontalListDisplay(
                 label: 'Televisi Penawaran Terbaik',
-                route: const SizedBox(),
+                route: PromosScreen(),
               ),
               const SizedBox(height: 10),
               HorizontalListDisplay(
                 label: 'Mesin Cuci Super Deal',
-                route: const SizedBox(),
+                route: PromosScreen(),
               ),
               const SizedBox(height: 10),
               HorizontalListDisplay(
                 label: 'Lemari Es Termurah',
-                route: const SizedBox(),
+                route: PromosScreen(),
               ),
               const SizedBox(height: 10),
               HorizontalListDisplay(
                 label: 'Air Conditioner',
-                route: const SizedBox(),
+                route: PromosScreen(),
               ),
               const SizedBox(height: 10),
               HorizontalListDisplay(
@@ -197,7 +197,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 10),
               HorizontalListDisplay(
                 label: 'Audio',
-                route: const SizedBox(),
+                route: PromosScreen(),
               ),
               const SizedBox(height: 10),
               HorizontalListDisplay(
